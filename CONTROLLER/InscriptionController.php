@@ -56,12 +56,8 @@ class InscriptionController {
         }
     }
 
-    private function redirectWithMessage($message, $type, $emailError = false) {
-        $location = "/FormulaireInscription/index.php?action=inscription&message=" . urlencode($message) . "&type=" . $type;
-        if ($emailError) {
-            $location .= "&emailError=1";
-        }
-        header("Location: " . $location);
+    private function redirectWithMessage($message, $type) {
+        header("Location: /FormulaireInscription/index.php?action=inscription&message=" . urlencode($message) . "&type=" . $type);
         exit();
     }
 

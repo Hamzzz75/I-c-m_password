@@ -31,6 +31,11 @@
                         <?php unset($_SESSION['login_error']); ?>
                     <?php endif; ?>
                     <button type="submit" class="btn btn-primary">Se connecter</button>
+
+                    <div class="text-center mt-4">
+                        <a href="index.php?action=forgotPassword">Mot de passe oublié ?</a>
+                    </div>
+
                 </form>
                 
                 <div class="text-center mt-4">

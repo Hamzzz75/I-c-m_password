@@ -31,7 +31,9 @@ class LoginController {
             // Authentification
             $user = $this->model->authenticate($email, $password);
             if ($user) {
-                $this->showWelcome($user['firstname']);
+                $_SESSION['firstname'] = $user['firstname']; // Stocker le prénom dans la session
+                $_SESSION['email'] = $user['email']; // Stocker l'email dans la session
+                $this->showWelcome();
             } else {
                 $_SESSION['login_error'] = 'Identifiants incorrects ou compte inexistant.';
                 $this->redirectBack();
@@ -44,8 +46,8 @@ class LoginController {
         exit();
     }
 
-    private function showWelcome($firstname) {
-        header("Location: /FormulaireInscription/VIEW/UserWelcomeView.php?firstname=" . urlencode($firstname));
+    private function showWelcome() {
+        header("Location: /FormulaireInscription/VIEW/UserWelcomeView.php");
         exit();
     }
 }

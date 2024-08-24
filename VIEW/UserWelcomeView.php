@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,15 +18,26 @@
         </div>
         <div class="card bg-dark text-white mt-5">
             <div class="card-body">
-                <h2 class="card-title text-center mb-4">Bienvenue, <?php echo htmlspecialchars($_GET['firstname']); ?></h2>
+                <h2 class="card-title text-center mb-4">Bienvenue, 
+                    <?php 
+                        if (isset($_SESSION['firstname'])) {
+                            echo htmlspecialchars($_SESSION['firstname']); 
+                        }
+                    ?>
+                </h2>
+                <div class="text-center mt-4">
+                    <a href="../VIEW2/HomeView.php" class="btn btn-success">Menu principale</a>
+                </div>
             </div>
         </div>
     </div>
 </body>
+
 <style>
         body {
             background-color: #343a40; 
             color: white; 
+            font-family: 'Arial', sans-serif;
         }
 
         .container {
@@ -35,16 +50,49 @@
 
         .card {
             width: 400px;
+            background-color: #222;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
         }
 
         .card-title {
             color: white;
+            animation: fadeInDown 1s ease-out;
         }
 
         .logout-button {
             position: absolute;
             top: 20px;
             right: 20px;
+        }
+
+        .btn-success {
+            background-color: #28a745; 
+            border-color: #28a745; 
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-success:hover {
+            background-color: #218838; 
+            border-color: #1e7e34; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </html>

@@ -8,13 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         require_once 'CONTROLLER/LoginController.php';
         $controller = new LoginController();
         $controller->authenticate();
+    } elseif (isset($_GET['action']) && $_GET['action'] === 'changePassword') {
+        require_once 'CONTROLLER/ChangePasswordController.php';
+        $controller = new ChangePasswordController();
+        $controller->changePassword();
     } else {
         require_once 'CONTROLLER/InscriptionController.php';
         $controller = new InscriptionController();
         $controller->submit();
     }
-} 
-else {
+} else {
     if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'confirmation':
@@ -32,14 +35,18 @@ else {
             case 'welcome':
                 require_once 'VIEW/WelcomeView.php';
                 break;
+            case 'changePassword':
+                require_once 'VIEW2/ChangePasswordView.php';
+                break;
+            case 'home':
+                require_once 'VIEW2/HomeView.php';
+                break;
             default:
                 require_once 'VIEW/WelcomeView.php';
                 break;
         }
-    } 
-
-    else {
+    } else {
         require_once 'VIEW/WelcomeView.php';
-    } 
+    }
 }
 ?>
