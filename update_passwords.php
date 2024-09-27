@@ -4,7 +4,7 @@ require_once 'BDD/Database.php';
 
 $db = Database::getInstance()->getConnection();
 
-// Sélectionner les utilisateurs avec des mots de passe non hachés
+
 $result = $db->query("SELECT id, password FROM users WHERE password NOT LIKE '$2y$%'");
 
 while ($row = $result->fetch_assoc()) {
@@ -19,7 +19,7 @@ while ($row = $result->fetch_assoc()) {
     $stmt->bind_param('si', $hashed_password, $id);
     $stmt->execute();
 
-    // Affichage pour vérifier chaque mot de passe mis à jour
+    
     echo "User ID: $id - Original Password: $password - Hashed Password: $hashed_password<br>";
 }
 
