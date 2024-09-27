@@ -2,7 +2,7 @@
 require_once '../BDD/Database.php';
 require_once '../MODEL/InscriptionModel.php';
 
-header('Content-Type: application/json'); // Indiquer que la réponse est du JSON
+header('Content-Type: application/json'); 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
