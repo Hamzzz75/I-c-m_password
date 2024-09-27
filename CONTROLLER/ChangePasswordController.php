@@ -23,7 +23,7 @@ class ChangePasswordController {
             $new_password = isset($_POST['new_password']) ? $_POST['new_password'] : '';
             $confirm_new_password = isset($_POST['confirm_new_password']) ? $_POST['confirm_new_password'] : '';
 
-            // Ajout de messages de débogage
+            // débogage
             error_log("Email from session: " . $_SESSION['email']);
             error_log("Current password: " . $current_password);
             error_log("New password: " . $new_password);
@@ -43,14 +43,14 @@ class ChangePasswordController {
             }
 
             // Vérification du mot de passe actuel
-            $email = $_SESSION['email']; // Assurez-vous que l'email est stocké dans la session lors de la connexion
+            $email = $_SESSION['email']; 
             if (!$this->model->checkCurrentPassword($email, $current_password)) {
                 $_SESSION['password_error'] = 'Le mot de passe actuel est incorrect.';
                 $this->redirectBack();
                 return;
             }
 
-            // Mise à jour du mot de passe
+            // MAJ du mot de passe
             if ($this->model->updatePassword($email, $new_password)) {
                 $_SESSION['password_success'] = 'Le mot de passe a été mis à jour avec succès.';
                 header("Location: /FormulaireInscription/index.php?action=changePassword");
