@@ -5,7 +5,7 @@ class Database {
     private $connection;
 
     private function __construct() {
-        // Vos paramètres de connexion à la base de données
+        
         $this->connection = new mysqli('localhost', 'root', '', 'inscriptions');
 
         if ($this->connection->connect_error) {
@@ -30,7 +30,7 @@ class Database {
     }
 
     private function __clone() {
-        // Empêche le clonage de l'instance
+        
     }
 }
 
