@@ -46,7 +46,7 @@ class InscriptionController {
                 return;
             }
 
-            // Insertion des données dans la base de données
+            // Inserer les données dans la base de données
             $result = $this->model->insertInscription($firstname, $lastname, $email, $password);
             if ($result) {
                 $this->showConfirmation();
