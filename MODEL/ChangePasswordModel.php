@@ -20,13 +20,13 @@ class ChangePasswordModel {
             die('Erreur d\'exécution de la requête : ' . $stmt->error);
         }
 
-        // Initialiser la variable avant de l'utiliser
+        
         $hashed_password = '';
         $stmt->bind_result($hashed_password);
         $stmt->fetch();
         $stmt->close();
 
-        // Ajout de messages de débogage
+        // débogage
         error_log("Current password input: " . $current_password);
         error_log("Hashed password from DB: " . $hashed_password);
         $isPasswordCorrect = password_verify($current_password, $hashed_password);
